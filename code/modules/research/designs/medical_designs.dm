@@ -624,6 +624,18 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_MEDICAL
 
+/datum/design/implant_internal_id
+	name = "Internal ID Implant Case"
+	desc = "A glass case containing an implant."
+	id = "implant_internal_id"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 500, /datum/material/glass = 500)
+	build_path = /obj/item/implantcase/internal_id
+	category = list(
+		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_MISC
+	)
+
+
 //Cybernetic organs
 
 /datum/design/cybernetic_liver

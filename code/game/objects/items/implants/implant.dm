@@ -137,3 +137,6 @@
 /obj/item/implant/dropped(mob/user)
 	. = TRUE
 	..()
+
+
+
