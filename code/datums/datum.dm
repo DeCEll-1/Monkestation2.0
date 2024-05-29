@@ -40,13 +40,6 @@
 	/// Datum level flags
 	var/datum_flags = NONE
 
-#ifndef EXPERIMENT_515_DONT_CACHE_REF
-	/// A cached version of our \ref
-	/// The brunt of \ref costs are in creating entries in the string tree (a tree of immutable strings)
-	/// This avoids doing that more then once per datum by ensuring ref strings always have a reference to them after they're first pulled
-	var/cached_ref
-#endif
-
 	/// A weak reference to another datum
 	var/datum/weakref/weak_reference
 
@@ -309,7 +302,7 @@
 
 /// Reapplies all the filters.
 /datum/proc/update_filters()
-	ASSERT(isatom(src) || istype(src, /image))
+	ASSERT(isatom(src) || isimage(src))
 	var/atom/atom_cast = src // filters only work with images or atoms.
 	atom_cast.filters = null
 	filter_data = sortTim(filter_data, GLOBAL_PROC_REF(cmp_filter_data_priority), TRUE)
@@ -371,7 +364,7 @@
 
 /// Returns the filter associated with the passed key
 /datum/proc/get_filter(name)
-	ASSERT(isatom(src) || istype(src, /image))
+	ASSERT(isatom(src) || isimage(src))
 	if(filter_data && filter_data[name])
 		var/atom/atom_cast = src // filters only work with images or atoms.
 		return atom_cast.filters[filter_data.Find(name)]
@@ -394,7 +387,7 @@
 	update_filters()
 
 /datum/proc/clear_filters()
-	ASSERT(isatom(src) || istype(src, /image))
+	ASSERT(isatom(src) || isimage(src))
 	var/atom/atom_cast = src // filters only work with images or atoms.
 	filter_data = null
 	atom_cast.filters = null

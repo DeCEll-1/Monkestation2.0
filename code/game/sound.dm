@@ -24,6 +24,7 @@ GLOBAL_LIST_INIT(proxy_sound_channels, list(
 	CHANNEL_INSTRUMENTS,
 	CHANNEL_INSTRUMENTS_ROBOT,
 	CHANNEL_MOB_SOUNDS,
+	CHANNEL_PRUDE,
 ))
 
 
@@ -149,6 +150,9 @@ GLOBAL_LIST_INIT(proxy_sound_channels, list(
 	if("[CHANNEL_MASTER_VOLUME]" in client?.prefs?.channel_volume)
 		sound_to_use.volume *= client.prefs.channel_volume["[CHANNEL_MASTER_VOLUME]"] * 0.01
 
+	if((mixer_channel == CHANNEL_PRUDE) && client?.prefs.read_preference(/datum/preference/toggle/prude_mode))
+		sound_to_use.volume *= 0
+
 	if(vary)
 		if(frequency)
 			sound_to_use.frequency = frequency
@@ -220,9 +224,14 @@ GLOBAL_LIST_INIT(proxy_sound_channels, list(
 			var/area/A = get_area(src)
 			sound_to_use.environment = A.sound_environment
 
-		if(use_reverb && sound_to_use.environment != SOUND_ENVIRONMENT_NONE) //We have reverb, reset our echo setting
-			sound_to_use.echo[3] = 0 //Room setting, 0 means normal reverb
-			sound_to_use.echo[4] = 0 //RoomHF setting, 0 means normal reverb.
+		if(turf_source != get_turf(src))
+			sound_to_use.echo = list(0,0,0,0,0,0,-10000,1.0,1.5,1.0,0,1.0,0,0,0,0,1.0,7)
+		else
+			sound_to_use.echo = list(0,0,0,0,0,0,0,0.25,1.5,1.0,0,1.0,0,0,0,0,1.0,7)
+
+		if(!use_reverb)
+			sound_to_use.echo[3] = -10000
+			sound_to_use.echo[4] = -10000
 
 	SEND_SOUND(src, sound_to_use)
 

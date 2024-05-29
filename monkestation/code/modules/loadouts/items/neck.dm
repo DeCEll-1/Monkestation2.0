@@ -137,6 +137,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Maid Neck Cover"
 	item_path = /obj/item/clothing/neck/maid
 
+/datum/loadout_item/neck/bowtie_collar
+	name = "Colorable Bowtie Collar"
+	item_path = /obj/item/clothing/neck/tie/bunnytie/tied
+
 /datum/loadout_item/neck/boatcloak
 	name = "Boat cloak"
 	item_path = /obj/item/clothing/neck/boatcloak
@@ -181,6 +185,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/ace
 	name = "Asexual Pride Cloak"
 	item_path = /obj/item/clothing/neck/ace
+
+/datum/loadout_item/neck/rainbow_bowtie
+	name = "Rainbow Bow Tie"
+	item_path = /obj/item/clothing/neck/bowtie/rainbow
 
 /*
 *	DONATOR

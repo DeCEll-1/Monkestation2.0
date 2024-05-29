@@ -6,7 +6,10 @@
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.05
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.02
 	power_channel = AREA_USAGE_ENVIRON
-	req_access = list(ACCESS_ATMOSPHERICS)
+	// monkestation edit: let engineers unlock air alarms
+	req_access = null
+	req_one_access = list(ACCESS_ATMOSPHERICS, ACCESS_ENGINE_EQUIP)
+	// monkestation end
 	max_integrity = 250
 	integrity_failure = 0.33
 	armor_type = /datum/armor/machinery_airalarm
@@ -161,6 +164,8 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 	data["dangerLevel"] = danger_level
 	data["atmosAlarm"] = !!my_area.active_alarms[ALARM_ATMOS]
 	data["fireAlarm"] = my_area.fire
+	data["faultStatus"] = my_area.fault_status
+	data["faultLocation"] = my_area.fault_location
 
 	var/turf/turf = get_turf(src)
 	var/datum/gas_mixture/environment = turf.return_air()
@@ -399,6 +404,30 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 		if ("reset")
 			if (alarm_manager.clear_alarm(ALARM_ATMOS))
 				danger_level = AIR_ALARM_ALERT_NONE
+
+		/* monke start: air conditioning: */
+		if("air_conditioning")
+			if(!isnum(params["value"]))
+				return
+			if(params["value"])
+				stop_ac()
+			else
+				start_ac()
+			investigate_log("has had its air conditioning turned [air_conditioning ? "on" : "off"] by [key_name(usr)]", INVESTIGATE_ATMOS)
+			. = TRUE
+
+		if("set_ac_target")
+			if(!isnum(params["target"]))
+				return
+			set_ac_target(params["target"])
+			investigate_log("has had its air conditioning target set to [params["target"]] by [key_name(usr)]", INVESTIGATE_ATMOS)
+			. = TRUE
+
+		if("default_ac_target")
+			set_ac_target(initial(ac_temp_target))
+			investigate_log("has had its air conditioning target reset to default by [key_name(usr)]", INVESTIGATE_ATMOS)
+			. = TRUE
+		/* monke end */
 
 	update_appearance()
 

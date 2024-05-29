@@ -4,6 +4,7 @@ export const CHANNELS = [
   'Radio',
   'Me',
   'OOC',
+  'LOOC', // monke: looc
   'Admin',
   'Mentor',
 ] as const;
@@ -37,6 +38,12 @@ export const RADIO_PREFIXES = {
     id: 'binary',
     label: '0101',
   },
+
+  ':g ': {
+    id: 'changeling',
+    label: 'Cling',
+  },
+
   ':c ': {
     id: 'command',
     label: 'Cmd',

@@ -94,6 +94,11 @@
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	vary = FALSE
 
+/datum/emote/living/scream/run_emote(mob/user, params, type_override, intentional = FALSE)
+	if(!intentional && HAS_TRAIT(user, TRAIT_ANALGESIA))
+		return
+	return ..()
+
 /datum/emote/living/scream/get_sound(mob/living/user)
 	if(issilicon(user))
 		return pick(
@@ -145,9 +150,9 @@
 /datum/emote/living/bark/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_ANIME))
-	 return TRUE
+		return TRUE
 	else
-	 return FALSE
+		return FALSE
 /datum/emote/living/bark
 	key = "bark"
 	key_third_person = "barks"
@@ -169,6 +174,7 @@
 	message_param = "wehs at %t!"
 	message_mime = "wehs silently!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	vary = TRUE
 
 /datum/emote/living/weh/get_sound(mob/living/user)
 	if(islizard(user))
@@ -182,3 +188,57 @@
 	else
 		return FALSE
 
+/datum/emote/living/squeal
+	key = "squeal"
+	key_third_person = "squeals"
+	message = "squeals!"
+	message_param = "squeals at %t!"
+	message_mime = "squeals silently!"
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/squeal/get_sound(mob/living/user)
+	if(islizard(user))
+		return 'monkestation/sound/voice/lizard/squeal.ogg' //This is from Bay
+	else
+		return FALSE
+
+/datum/emote/living/squeal/can_run_emote(mob/user, status_check, intentional)
+	if(islizard(user))
+		return TRUE
+	else
+		return FALSE
+
+/datum/emote/living/tailthump
+	key = "thump"
+	key_third_person = "thumps their tail"
+	message = "thumps their tail!"
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/tailthump/get_sound(mob/living/user)
+	if(islizard(user))
+		return 'monkestation/sound/voice/lizard/tailthump.ogg' //https://freesound.org/people/TylerAM/sounds/389665/
+	else
+		return FALSE
+
+/datum/emote/living/tailthump/can_run_emote(mob/user, status_check, intentional)
+	if(islizard(user))
+		return TRUE
+	else
+		return FALSE
+
+// The below function replaces the `/datum/emote/silicon/mob_type_allowed_typecache` variable. If
+// you remove this function, be sure to replace the above variable.
+/datum/emote/silicon/can_run_emote(mob/user, status_check, intentional)
+	// Silicons and simple bots can always use silicon emotes, assuming nothing else is wrong
+	if(issilicon(user) || isbot(user))
+		return ..()
+
+	// Allow users with synthetic voice boxes to use silicon emotes as well, because a synthetic
+	// voice box is more akin to a speaker than a human larynx.
+	var/tongue = user.get_organ_slot(ORGAN_SLOT_TONGUE)
+	if(istype(tongue, /obj/item/organ/internal/tongue/synth))
+		return ..()
+
+	return FALSE

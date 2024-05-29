@@ -131,6 +131,12 @@
 	donator_only = TRUE
 	requires_purchase = FALSE
 
+/datum/loadout_item/head/snowman
+	name = "Snowman Head"
+	item_path = /obj/item/clothing/head/costume/snowman
+	donator_only = TRUE
+	requires_purchase = FALSE
+
 /datum/loadout_item/toys/seam_plush
 	name = "Seam Plush"
 	item_path = /obj/item/toy/plush/seam
@@ -240,6 +246,31 @@
 	donator_only = TRUE
 	requires_purchase = FALSE
 
+/datum/loadout_item/under/miscellaneous/aotuniform
+	name = "Survey Corps Uniform"
+	item_path = /obj/item/clothing/under/costume/aotuniform
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+/datum/loadout_item/pocket_items/donator/plantcrab
+	name = "Pet Delivery Beacon - Plant Crab"
+	item_path = /obj/item/choice_beacon/pet/donator/plantcrab
+	donator_only = TRUE
+	requires_purchase = FALSE
+	ckeywhitelist = list("Rickdude1231")
+
+/datum/loadout_item/effects/plantcrab
+	ckeywhitelist = list("Rickdude1231")
+	name = "Plant Crab Transformation"
+	item_path = /obj/item/effect_granter/donator/plant_crab
+	requires_purchase = FALSE
+
+/datum/loadout_item/toys/liefflos
+	name = "Lief Flos Plush"
+	item_path = /obj/item/toy/plush/liefflos
+	donator_only = TRUE
+	requires_purchase = FALSE
+
 //kon chieko
 /datum/loadout_item/head/bells
 	name = "Hair ribbons with bells"
@@ -253,4 +284,127 @@
 	item_path = /obj/item/clothing/head/costume/zed_officercap
 	donator_only = TRUE
 	requires_purchase = FALSE
-	ckeywhitelist = list("zedmastermind")
+
+//tonymcp
+
+/datum/loadout_item/mask/igor
+	name = "Igor Mask"
+	item_path = /obj/item/clothing/mask/igor
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+/datum/loadout_item/suit/violet_jacket
+	name = "Violet's Phantom Thief Jacket"
+	item_path = /obj/item/clothing/suit/costume/violet_jacket
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+/datum/loadout_item/toys/jackfrost
+	name = "Jack Frost Plush"
+	item_path = /obj/item/toy/plush/jackfrost
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+/datum/loadout_item/pocket_items/donator/void_butterfly
+	name = "Pet Delivery Beacon - Void Butterfly"
+	item_path = /obj/item/choice_beacon/pet/donator/void_butterfly
+	donator_only = TRUE
+	requires_purchase = FALSE
+	ckeywhitelist = list("tonymcsp")
+
+/datum/loadout_item/effects/void_butterfly
+	ckeywhitelist = list("tonymcsp")
+	name = "Void Butterfly Transformation"
+	item_path = /obj/item/effect_granter/donator/void_butterfly
+	requires_purchase = FALSE
+
+
+//Django
+/datum/loadout_item/suit/lambcloak
+	name = "Lamb's Cloak"
+	item_path = /obj/item/clothing/suit/lambcloak
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+//quilark
+/datum/loadout_item/suit/coat_quilark
+	name = "Discontinued Winter Coat"
+	item_path = /obj/item/clothing/suit/toggle/quilark
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+/datum/loadout_item/head/fur_cap_quilark
+	name = "Discontinued Cross Hat"
+	item_path = /obj/item/clothing/head/costume/fur_cap_quilark
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+/datum/loadout_item/toys/quilark
+	name = "Quilark Plush"
+	item_path = /obj/item/toy/plush/quilark
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+/datum/loadout_item/pocket_items/donator/quilava
+	name = "Pet Delivery Beacon - Quil Maid"
+	item_path = /obj/item/choice_beacon/pet/donator/quilava
+	donator_only = TRUE
+	requires_purchase = FALSE
+	ckeywhitelist = list("quilark")
+
+/datum/loadout_item/effects/quilava
+	ckeywhitelist = list("quilark")
+	name = "Quil Maid Transformation"
+	item_path = /obj/item/effect_granter/donator/quilava
+	requires_purchase = FALSE
+
+/datum/loadout_item/suit/org_thirteen
+	name = "Organization 13 Cloak"
+	item_path = /obj/item/clothing/suit/hooded/org_thirteen
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+//kumi
+/datum/loadout_item/suit/kimono_kumi
+	name = "Shrine Keeper's Kimono"
+	item_path = /obj/item/clothing/suit/jacket/kimono_kumi
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+/datum/loadout_item/under/miscellaneous/sarashi_kumi
+	name = "Shrine Keeper's Sarashi"
+	item_path = /obj/item/clothing/under/sarashi_kumi
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+/datum/loadout_item/shoes/sandals_kumi
+	name = "Shrine Keeper's Sandals"
+	item_path = /obj/item/clothing/shoes/sandal/kumi
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+/datum/loadout_item/gloves/fingerless_long
+	name = "Long Fingerless Gloves"
+	item_path = /obj/item/clothing/gloves/fingerless/long
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+/datum/loadout_item/neck/bell
+	name = "Bell Necklace"
+	item_path = /obj/item/clothing/neck/bell
+	donator_only = TRUE
+	requires_purchase = FALSE
+//OLIVER ITEMS
+/datum/loadout_item/suit/jacket_oliver
+	name = "Scarved Jacket"
+	item_path = /obj/item/clothing/suit/toggle/jacket_oliver
+	donator_only = TRUE
+	requires_purchase = FALSE
+
+//GNOB ITEMS
+/datum/loadout_item/glasses/sechud_terminated
+	name = "Terminated Sechuds"
+	item_path = /obj/item/clothing/glasses/hud/security/terminated
+	donator_only = TRUE
+	requires_purchase = FALSE
+	restricted_roles = list(JOB_SECURITY_OFFICER,JOB_SECURITY_ASSISTANT,JOB_HEAD_OF_SECURITY,JOB_WARDEN)
